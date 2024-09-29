@@ -39,7 +39,7 @@ jobs:
       - name: Upload
         uses: garygrossgarten/github-action-scp@release
         with:
-          local: .
+          local: ./docker-compose.yml
           concurrency: 20
           remote: /kuber/index_front/
           host: ${{ env.DC_HOST }}
