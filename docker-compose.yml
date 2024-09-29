@@ -1,0 +1,11 @@
+version: "3"
+services:
+  ima-front:
+    container_name: ima-front
+    restart: always
+    image: ${IMAGE}
+    networks:
+      - dc-net
+networks:
+  dc-net:
+    external: true
