@@ -32,7 +32,7 @@ jobs:
         id: build_push
         run: |
           ls
-          export IMAGE=${{ env.DOCKER_USER }}/ima_front:$(date +%s)
+          export IMAGE=${{ env.DOCKER_USER }}/index_front:$(date +%s)
           docker build . -t ${IMAGE}
           docker push ${IMAGE}
           echo "IMAGE=${IMAGE}" >> "$GITHUB_ENV"
@@ -41,7 +41,7 @@ jobs:
         with:
           local: .
           concurrency: 20
-          remote: /kuber/ima_front
+          remote: /kuber/index_front
           host: ${{ env.DC_HOST }}
           username: ${{ env.SSH_USER }}
           password: ${{ env.SSH_PASSWORD }}
@@ -54,5 +54,5 @@ jobs:
           port: 22
           script: |
             export IMAGE=${{ env.IMAGE }}
-            docker-compose -f /kuber/ima_front/docker-compose.yml down --remove-orphans
-            docker-compose -f /kuber/ima_front/docker-compose.yml up -d
+            docker-compose -f /kuber/index_front/docker-compose.yml down --remove-orphans
+            docker-compose -f /kuber/index_front/docker-compose.yml up -d
